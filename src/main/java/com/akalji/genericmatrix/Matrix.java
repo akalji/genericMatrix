@@ -240,9 +240,7 @@ public class Matrix<T extends Number> {
     }
 
 
-    /**
-     * @author Nikolai Tikhonov <akalji@ya.ru> akalji
-     */
+
     public void deleteColumn(int colToDelete) {
         Number newM[][] = new Number[this.vsize][this.hsize - 1];
 
@@ -260,6 +258,36 @@ public class Matrix<T extends Number> {
         this.M = newM;
     }
 
+    public void rotate180(){
+        Number newM[][] = new Number[this.vsize][this.hsize];
+        for (int i = 0; i < this.vsize; i++) {
+            newM[i]=M[this.vsize-1-i];
+        }
+        M=newM;
+        for (int i = 0; i <this.vsize; i++) {
+            Number newRow[] = new Number[this.hsize];
+            for (int j = 0; j < this.hsize; j++) {
+                newRow[j]=M[i][this.hsize-1-j];
+            }
+            M[i]=newRow;
+        }
+    }
+
+    /**
+     * @author Nikolai Tikhonov <akalji@ya.ru> akalji
+     */
+    public enum DIRECTION {
+        CLOCKWISE,
+        COUNTERCLOCKWISE,
+        NONE
+    }
+
+    /**
+     * @author Nikolai Tikhonov <akalji@ya.ru> akalji
+     */
+    public void rotate90(DIRECTION direction){
+
+    }
 
     /**
      * @author Nikolai Tikhonov <akalji@ya.ru> akalji
