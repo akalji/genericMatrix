@@ -228,7 +228,7 @@ public class Matrix<T extends Number> {
         Number newM[][] = new Number[this.vsize - 1][this.hsize];
 
         for (int i = 0, j = 0; i < this.vsize; i++, j++) {
-            if (i + 1 != rowToDelete) {
+            if (i != rowToDelete) {
                 newM[j] = M[i];
             } else {
                 j--;
