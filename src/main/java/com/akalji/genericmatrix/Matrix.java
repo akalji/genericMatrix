@@ -248,7 +248,7 @@ public class Matrix<T extends Number> {
 
         for (int i = 0; i < this.vsize; i++) {
             for (int j = 0, k = 0; j < this.hsize; j++, k++) {
-                if(i!=colToDelete) {
+                if (j != colToDelete) {
                     newM[i][k] = M[i][j];
                 } else {
                     k--;
@@ -282,5 +282,3 @@ public class Matrix<T extends Number> {
         return stringBuilder.toString();
     }
 }
-
-
