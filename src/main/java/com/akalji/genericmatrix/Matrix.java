@@ -240,7 +240,6 @@ public class Matrix<T extends Number> {
     }
 
 
-
     public void deleteColumn(int colToDelete) {
         Number newM[][] = new Number[this.vsize][this.hsize - 1];
 
@@ -258,23 +257,24 @@ public class Matrix<T extends Number> {
         this.M = newM;
     }
 
-    public void rotate180(){
+    public void rotate180() {
         Number newM[][] = new Number[this.vsize][this.hsize];
         for (int i = 0; i < this.vsize; i++) {
-            newM[i]=M[this.vsize-1-i];
+            newM[i] = M[this.vsize - 1 - i];
         }
-        M=newM;
-        for (int i = 0; i <this.vsize; i++) {
+        M = newM;
+        for (int i = 0; i < this.vsize; i++) {
             Number newRow[] = new Number[this.hsize];
             for (int j = 0; j < this.hsize; j++) {
-                newRow[j]=M[i][this.hsize-1-j];
+                newRow[j] = M[i][this.hsize - 1 - j];
             }
-            M[i]=newRow;
+            M[i] = newRow;
         }
     }
 
     /**
      * enum of directions for 90 degree rotations
+     *
      * @author Nikolai Tikhonov <akalji@ya.ru> akalji
      */
     public enum DIRECTION {
@@ -286,27 +286,32 @@ public class Matrix<T extends Number> {
     /**
      * @author Nikolai Tikhonov <akalji@ya.ru> akalji
      */
-    public void rotate90(DIRECTION direction){
+    public void rotate90(DIRECTION direction) {
         int newHsise = this.vsize;
         int newVsize = this.hsize;
         Number[][] newM = new Number[newVsize][newHsise];
-        switch (direction){
-            case CLOCKWISE:
-            {
+        switch (direction) {
+            case CLOCKWISE: {
                 for (int i = 0; i < this.vsize; i++) {
                     for (int j = 0; j < this.hsize; j++) {
-                        newM[j][newHsise-1-i]=M[i][j];
+                        newM[j][newHsise - 1 - i] = M[i][j];
                     }
                 }
                 break;
             }
 
-            case COUNTERCLOCKWISE:
-            {
+            case COUNTERCLOCKWISE: {
+                for (int i = 0; i < this.vsize; i++) {
+                    for (int j = 0; j < this.hsize; j++) {
+                        newM[i][j] = M[j][this.hsize - 1 - i];
+                    }
+                }
                 break;
             }
         }
-        M=newM;
+        this.vsize = newVsize;
+        this.hsize = newHsise;
+        M = newM;
 
     }
 
