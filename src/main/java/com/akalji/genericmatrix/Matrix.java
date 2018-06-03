@@ -274,6 +274,7 @@ public class Matrix<T extends Number> {
     }
 
     /**
+     * enum of directions for 90 degree rotations
      * @author Nikolai Tikhonov <akalji@ya.ru> akalji
      */
     public enum DIRECTION {
@@ -286,6 +287,26 @@ public class Matrix<T extends Number> {
      * @author Nikolai Tikhonov <akalji@ya.ru> akalji
      */
     public void rotate90(DIRECTION direction){
+        int newHsise = this.vsize;
+        int newVsize = this.hsize;
+        Number[][] newM = new Number[newVsize][newHsise];
+        switch (direction){
+            case CLOCKWISE:
+            {
+                for (int i = 0; i < this.vsize; i++) {
+                    for (int j = 0; j < this.hsize; j++) {
+                        newM[j][newHsise-1-i]=M[i][j];
+                    }
+                }
+                break;
+            }
+
+            case COUNTERCLOCKWISE:
+            {
+                break;
+            }
+        }
+        M=newM;
 
     }
 
